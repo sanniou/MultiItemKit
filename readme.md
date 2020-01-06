@@ -82,7 +82,9 @@ types          指定需要绘制的 ViewType 的集合，传空绘制全部类�
 在 `layout` 文件中绑定 `RecyclerView` 的 `data` 属性即可快速实现 `Adapter` 部分的操作
 ```
 <layout>
+
     <data>
+
         <variable
             name="itemClickListener"
             type="com.sanniou.multiitem.OnItemClickListener" />
@@ -91,6 +93,7 @@ types          指定需要绘制的 ViewType 的集合，传空绘制全部类�
             type="com.sanniou.multiitem.MultiItemArrayList&lt;DataItem&gt;" />
         <import type="com.sanniou.multiitem.DataItem" />
     </data>
+
         <androidx.recyclerview.widget.RecyclerView
             xmlns:android="http://schemas.android.com/apk/res/android"
             data="@{data}"
