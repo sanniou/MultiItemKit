@@ -13,10 +13,18 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name="com.sanniou.multiitemsample.BindingClickableListActivity" />
-        <activity android:name="com.sanniou.multiitemsample.WrapperShowActivity" />
-        <activity android:name="com.sanniou.multiitemsample.LoadListActivity" />
-        <activity android:name="com.sanniou.multiitemsample.ExpandableListActivity" />
+        <activity
+            android:name="com.sanniou.multiitemsample.BindingClickableListActivity"
+            android:label="BindingClickableListActivity" />
+        <activity
+            android:name="com.sanniou.multiitemsample.WrapperShowActivity"
+            android:label="WrapperShowActivity" />
+        <activity
+            android:name="com.sanniou.multiitemsample.LoadListActivity"
+            android:label="LoadListActivity" />
+        <activity
+            android:name="com.sanniou.multiitemsample.ExpandableListActivity"
+            android:label="ExpandableListActivity" />
         <activity android:name="com.sanniou.multiitemsample.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

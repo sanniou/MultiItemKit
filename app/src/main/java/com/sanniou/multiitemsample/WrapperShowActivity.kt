@@ -2,6 +2,7 @@ package com.sanniou.multiitemsample
 
 import android.app.ProgressDialog
 import android.graphics.Color
+import com.sanniou.multiitemkit.wrapper.RoundWrapperHandler
 import com.sanniou.multiitemsample.vo.MultiWrapperItem
 
 class WrapperShowActivity : BaseGithubRepoActivity() {
@@ -18,6 +19,7 @@ class WrapperShowActivity : BaseGithubRepoActivity() {
                 items.add(
                     when (index.rem(10)) {
                         0 -> MultiWrapperItem(githubRepo).apply {
+                            roundHandler.roundType = RoundWrapperHandler.RoundType.ALL
                             roundHandler.roundColor = Color.GREEN
                         }
                         1 -> MultiWrapperItem(githubRepo).apply {
@@ -27,7 +29,8 @@ class WrapperShowActivity : BaseGithubRepoActivity() {
                             paddingHandler.padding(28)
                         }
                         3 -> MultiWrapperItem(githubRepo).apply {
-                            roundHandler.roundColor = Color.WHITE
+                            roundHandler.roundType = RoundWrapperHandler.RoundType.BOTTOM
+                            roundHandler.roundColor = Color.LTGRAY
                         }
                         4 -> MultiWrapperItem(githubRepo).apply {
                             roundHandler.roundDrawable = R.mipmap.ic_launcher
