@@ -32,9 +32,7 @@ class WrapperShowActivity : BaseGithubRepoActivity() {
                         4 -> MultiWrapperItem(githubRepo).apply {
                             roundHandler.roundDrawable = R.mipmap.ic_launcher
                         }
-                        // 不能直接返回 githubRepo 原始类型，因为布局都是一样的，View会被复用
-                        // MultiWrapperItem 会清除之前的属性
-                        else -> MultiWrapperItem(githubRepo)
+                        else -> githubRepo
                     }
                 )
             }
