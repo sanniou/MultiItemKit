@@ -1,4 +1,4 @@
-package com.sanniou.multiitemkit
+package com.sanniou.multiitemkit.bindingadapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,7 +7,10 @@ import androidx.annotation.ColorInt
 import androidx.databinding.BindingAdapter
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
-import com.sanniou.multiitem.AdapterItem
+import com.sanniou.multiitem.DataItem
+import com.sanniou.multiitemkit.BR
+import com.sanniou.multiitemkit.R
+import com.sanniou.multiitemkit.dp2px
 import com.sanniou.multiitemkit.drawable.DividerDrawable
 import com.sanniou.multiitemkit.helper.replaceView
 
@@ -22,7 +25,7 @@ fun bindingAdapterBindingEcent(view: View, callback: (View) -> Unit) {
 }
 
 @BindingAdapter("item")
-fun bindingFrameLayout(view: FrameLayout, item: AdapterItem) {
+fun bindingFrameLayout(view: FrameLayout, item: DataItem) {
     val viewItem = view.getTag(R.id.multiitemkit_tag_key_item)
     if (viewItem === item) {
         return
@@ -46,7 +49,7 @@ fun bindingFrameLayout(view: FrameLayout, item: AdapterItem) {
 }
 
 @BindingAdapter(value = ["item"], requireAll = false)
-fun bindingViewLayout(view: View, item: AdapterItem) {
+fun bindingViewLayout(view: View, item: DataItem) {
     val viewItem = view.getTag(R.id.multiitemkit_tag_key_item)
     if (viewItem === item) {
         return

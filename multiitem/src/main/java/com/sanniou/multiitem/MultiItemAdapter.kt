@@ -8,13 +8,13 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
 
-open class MultiItemAdapter<T : AdapterItem>(
-    items: DataBindingArrayList<T>
+open class MultiItemAdapter<T : DataItem>(
+    items: MultiItemArrayList<T>
 ) : RecyclerView.Adapter<AdapterViewHolder>() {
 
     private var mCallback = AdapterItemsChangedCallback<T>(this)
 
-    var data: DataBindingArrayList<T> = items
+    var data: MultiItemArrayList<T> = items
         set(value) {
             if (field == value) {
                 return
@@ -50,9 +50,9 @@ open class MultiItemAdapter<T : AdapterItem>(
         return AdapterViewHolder(itemView)
     }
 
-    override fun onBindViewHolder(bindViewHolder: AdapterViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: AdapterViewHolder, position: Int) {
         val item = getItem(position)
-        bindViewHolder.onBind(item)
+        holder.onBind(item)
     }
 
     override fun onFailedToRecycleView(holder: AdapterViewHolder): Boolean {
@@ -84,16 +84,13 @@ class AdapterViewHolder(itemView: View) :
         itemView.setTag(R.id.multiitem_tag_key_holder, this)
     }
 
-    lateinit var item: AdapterItem
+    lateinit var item: DataItem
 
-    fun onBind(item: AdapterItem) {
+    fun onBind(item: DataItem) {
         this.item = item
         val binding = DataBindingUtil.getBinding<ViewDataBinding>(itemView)
         binding?.setVariable(item.getVariableId(), item.getItemData())
         binding?.executePendingBindings()
-        if (item is WrapperAdapterItem) {
-            item.executeHankers(itemView)
-        }
         item.onBind(this)
     }
 

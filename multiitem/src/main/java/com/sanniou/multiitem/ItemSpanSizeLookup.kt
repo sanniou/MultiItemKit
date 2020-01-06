@@ -1,9 +1,8 @@
-package com.sanniou.multiitemkit
+package com.sanniou.multiitem
 
 import androidx.recyclerview.widget.GridLayoutManager.SpanSizeLookup
-import com.sanniou.multiitem.AdapterItem
 
-class ItemSpanSizeLookup(private val data: List<AdapterItem>, private val span: Int) :
+class ItemSpanSizeLookup(private val data: List<DataItem>, private val span: Int) :
     SpanSizeLookup() {
 
     override fun getSpanSize(position: Int): Int {

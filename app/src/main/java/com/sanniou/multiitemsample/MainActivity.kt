@@ -20,11 +20,18 @@ class MainActivity : AppCompatActivity() {
             )
 
         binding.item = DividerItem(Color.BLUE, Color.RED, heightDP = 1F, paddingDP = 8F)
+
         toLoad.setOnClickListener {
             startActivity(Intent(this, LoadListActivity::class.java))
         }
         toExpandable.setOnClickListener {
             startActivity(Intent(this, ExpandableListActivity::class.java))
+        }
+        toBindingList.setOnClickListener {
+            startActivity(Intent(this, BindingClickableListActivity::class.java))
+        }
+        toShowWrapper.setOnClickListener {
+            startActivity(Intent(this, WrapperShowActivity::class.java))
         }
     }
 }

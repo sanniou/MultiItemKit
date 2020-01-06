@@ -3,9 +3,9 @@ package com.sanniou.multiitemsample
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.sanniou.multiitem.AdapterItem
-import com.sanniou.multiitem.DataBindingArrayList
+import com.sanniou.multiitem.DataItem
 import com.sanniou.multiitem.MultiItemAdapter
+import com.sanniou.multiitem.MultiItemArrayList
 import com.sanniou.multiitemsample.model.GithubRepo
 import com.sanniou.multiitemsample.model.toGithubRepos
 import com.sanniou.multiitemsample.utils.toRequestGet
@@ -19,19 +19,23 @@ const val API_REPOSITORIES = "https://api.github.com/repositories"
 
 abstract class BaseGithubRepoActivity : AppCompatActivity() {
 
-    val items = DataBindingArrayList<AdapterItem>()
+    val items = MultiItemArrayList<DataItem>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.main_activity_load_list)
-
-        recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.adapter = createAdapter(items)
+        initView()
 
         onViewCreated()
     }
 
-    open fun createAdapter(items: DataBindingArrayList<AdapterItem>) = MultiItemAdapter(items)
+    protected open fun initView() {
+        setContentView(R.layout.main_activity_load_list)
+
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.adapter = createAdapter(items)
+    }
+
+    open fun createAdapter(items: MultiItemArrayList<DataItem>) = MultiItemAdapter(items)
 
     abstract fun onViewCreated()
 

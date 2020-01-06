@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="itemClickListener"
+            type="com.sanniou.multiitem.OnItemClickListener" />
+
+        <variable
+            name="data"
+            type="com.sanniou.multiitem.MultiItemArrayList&lt;DataItem&gt;" />
+
+        <import type="com.sanniou.multiitem.DataItem" />
+    </data>
+
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            data="@{data}"
+            itemClickListener="@{itemClickListener}"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </FrameLayout>
+</layout>

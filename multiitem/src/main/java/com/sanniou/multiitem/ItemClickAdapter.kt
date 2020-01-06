@@ -3,15 +3,15 @@ package com.sanniou.multiitem
 import android.view.View
 import android.view.ViewGroup
 
-typealias OnItemClickListener = (holder: AdapterViewHolder) -> Unit
 
-open class ItemClickAdapter<T : AdapterItem>(
-    items: DataBindingArrayList<T>,
+
+open class ItemClickAdapter<T : DataItem>(
+    items: MultiItemArrayList<T>,
     var itemClickListener: OnItemClickListener? = null
 ) : MultiItemAdapter<T>(items), View.OnClickListener {
 
     override fun onClick(v: View) {
-        itemClickListener?.invoke(v.getAdapterHolder())
+        itemClickListener?.onItemClick(v.getAdapterHolder())
     }
 
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int) =

@@ -9,7 +9,7 @@ import java.util.ArrayList
  * The original [ObservableArrayList] can't be inherited, so copy the code directly and extend the move change and other methods, which is more suitable for the animation display of RecyclerView.
  *
  */
-open class DataBindingArrayList<T> : ArrayList<T>(), ObservableList<T> {
+open class MultiItemArrayList<T> : ArrayList<T>(), ObservableList<T> {
 
     @Transient
     private var mListeners: ListChangeRegistry? = ListChangeRegistry()

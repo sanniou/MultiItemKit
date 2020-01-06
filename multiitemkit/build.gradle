@@ -49,7 +49,7 @@ dependencies {
 publish {
     artifactId = 'multiitemkit'  // artifactId
     uploadName = 'MultiItemKit' // 展示名字
-    publishVersion = '0.0.1' //版本
+    publishVersion = rootProject.multiItemKitVersion
     userOrg = rootProject.userOrg
     groupId = rootProject.groupId
     desc = rootProject.desc

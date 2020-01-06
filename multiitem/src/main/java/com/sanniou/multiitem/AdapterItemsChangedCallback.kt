@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 /**
  * Binding the data relationship between Adapter and ObservableList
  */
-class AdapterItemsChangedCallback<T : AdapterItem>(private val adapter: RecyclerView.Adapter<*>) :
+class AdapterItemsChangedCallback<T : DataItem>(private val adapter: RecyclerView.Adapter<*>) :
     ObservableList.OnListChangedCallback<ObservableList<T>>() {
 
     override fun onChanged(sender: ObservableList<T>) {

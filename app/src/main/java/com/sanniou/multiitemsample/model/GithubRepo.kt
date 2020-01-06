@@ -1,7 +1,7 @@
 package com.sanniou.multiitemsample.model
 
-import com.sanniou.multiitem.AdapterItem
 import com.sanniou.multiitem.AdapterViewHolder
+import com.sanniou.multiitem.DataItem
 import com.sanniou.multiitemsample.R
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -47,8 +47,7 @@ data class GithubRepo(
     val name: String,
     val owner: Owner,
     val url: String
-) : AdapterItem {
-
+) : DataItem {
     override fun getItemType() = R.layout.main_item_github_repo
 }
 
@@ -59,7 +58,7 @@ data class Owner(
     val login: String,
     val type: String,
     val url: String
-    ) : AdapterItem {
+    ) : DataItem {
 
     var expanded: Boolean = false
 

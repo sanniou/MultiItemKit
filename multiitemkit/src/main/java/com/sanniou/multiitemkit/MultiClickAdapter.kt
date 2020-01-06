@@ -2,20 +2,22 @@ package com.sanniou.multiitemkit
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.sanniou.multiitem.AdapterItem
+import com.sanniou.multiitem.DataItem
 import com.sanniou.multiitem.AdapterViewHolder
-import com.sanniou.multiitem.DataBindingArrayList
 import com.sanniou.multiitem.MultiItemAdapter
+import com.sanniou.multiitem.MultiItemArrayList
 
-class PerfecteAdapter<T : AdapterItem>(items: DataBindingArrayList<T>) :
+class MultiClickAdapter<T : DataItem>(items: MultiItemArrayList<T>) :
     MultiItemAdapter<T>(items) {
 
     var itemClickListener: OnItemClickListener? = null
     var longPressListener: OnLongPressListener? = null
     var viewClickListener: SpecialViewClickListener? = null
 
-    private val _Item_clickListener: OnItemClickListener = { itemClickListener?.invoke(it) ?: false }
-    private val _longPressListener: OnLongPressListener? = { longPressListener?.invoke(it) }
+    private val _itemClickListener: OnItemClickListener =
+        OnItemClickListener { itemClickListener?.onItemClick(it) ?: false }
+    private val _longPressListener: OnLongPressListener =
+        OnLongPressListener { longPressListener?.onLongPress(it) }
     private val _viewClickListener = object : SpecialViewClickListener {
 
         override fun onSpecialViewClick(holder: AdapterViewHolder, viewID: Int) =
@@ -28,7 +30,7 @@ class PerfecteAdapter<T : AdapterItem>(items: DataBindingArrayList<T>) :
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): AdapterViewHolder {
         ItemClickHelper.attachToRecyclerView(
             (viewGroup as RecyclerView),
-            _Item_clickListener,
+            _itemClickListener,
             _longPressListener,
             _viewClickListener
         )

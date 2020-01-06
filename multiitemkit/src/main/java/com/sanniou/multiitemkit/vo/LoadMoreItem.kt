@@ -2,12 +2,12 @@ package com.sanniou.multiitemkit.vo
 
 import androidx.databinding.ObservableField
 import com.sanniou.multiitemkit.R
-import com.sanniou.multiitem.AdapterItem
+import com.sanniou.multiitem.DataItem
 import com.sanniou.multiitem.AdapterViewHolder
 
 typealias  OnLoadListener = (callBack: LoadCallBack) -> Unit
 
-open class LoadMoreItem(var onLoadListener: OnLoadListener) : AdapterItem, LoadCallBack {
+open class LoadMoreItem(var onLoadListener: OnLoadListener) : DataItem, LoadCallBack {
 
     var status = ObservableField<Int>(STATE_READY)
     var text = ObservableField<String>()

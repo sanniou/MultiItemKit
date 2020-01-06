@@ -23,8 +23,8 @@ import java.util.HashMap
 class HttpUtil {
     companion object {
         private const val TAG = "HttpUtil"
-        private const val CONNECT_TIME_OUT = 10000
-        private const val READ_TIME_OUT = 15000
+        private const val CONNECT_TIME_OUT = 30_000
+        private const val READ_TIME_OUT = 30_000
         private const val USER_AGENT =
             "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.63"
         private const val ENCODE: String = "utf-8"

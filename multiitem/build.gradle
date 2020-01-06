@@ -48,12 +48,12 @@ dependencies {
 }
 
 publish {
+    artifactId = 'multiitem'
+    uploadName = 'MultiItem'
+    publishVersion = rootProject.multiItemVersion
     userOrg = rootProject.userOrg
     groupId = rootProject.groupId
-    artifactId = 'multiitem'
-    publishVersion = '0.0.1'
     desc = rootProject.desc
     website = rootProject.website
-    uploadName = 'MultiItem'
     licences = rootProject.licences
 }

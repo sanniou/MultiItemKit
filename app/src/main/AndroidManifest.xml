@@ -13,6 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name="com.sanniou.multiitemsample.BindingClickableListActivity" />
+        <activity android:name="com.sanniou.multiitemsample.WrapperShowActivity" />
         <activity android:name="com.sanniou.multiitemsample.LoadListActivity" />
         <activity android:name="com.sanniou.multiitemsample.ExpandableListActivity" />
         <activity android:name="com.sanniou.multiitemsample.MainActivity">

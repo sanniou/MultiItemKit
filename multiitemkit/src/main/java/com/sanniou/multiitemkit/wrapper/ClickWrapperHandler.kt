@@ -17,4 +17,9 @@ class ClickWrapperHandler(
             view.setOnLongClickListener(onLongClickListener)
         }
     }
+
+    override fun restoreHandle(view: View) {
+        view.setOnClickListener(null)
+        view.setOnLongClickListener(null)
+    }
 }

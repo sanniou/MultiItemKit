@@ -7,8 +7,6 @@ import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.util.Log
 import android.view.View
-import androidx.annotation.ColorInt
-import androidx.annotation.DrawableRes
 import androidx.annotation.IntDef
 import androidx.appcompat.content.res.AppCompatResources.getDrawable
 import com.sanniou.multiitem.WrapperHandler
@@ -17,17 +15,10 @@ import com.sanniou.multiitemkit.helper.setBackgroundKeepingPadding
 
 class RoundWrapperHandler : WrapperHandler {
 
-    @get:RoundType
     var roundType = RoundType.NULL
-        private set
-    @get:DrawableRes
     var roundDrawable = 0
-        private set
-    @get:ColorInt
     var roundColor: Int = defaultRoundColor
-        private set
-    var roundRadious = 30
-        private set
+    var roundRadius = 30
 
     @Retention(AnnotationRetention.SOURCE)
     @IntDef(
@@ -60,32 +51,16 @@ class RoundWrapperHandler : WrapperHandler {
         }
     }
 
-    fun setRoundRadious(roundRadious: Int): RoundWrapperHandler {
-        this.roundRadious = roundRadious
-        return this
-    }
-
-    fun setRoundType(@RoundType roundType: Int): RoundWrapperHandler {
-        this.roundType = roundType
-        return this
-    }
-
-    fun setRoundDrawable(@DrawableRes roundDrawable: Int): RoundWrapperHandler {
-        this.roundDrawable = roundDrawable
-        return this
-    }
-
-    fun setRoundColor(@ColorInt roundColor: Int): RoundWrapperHandler {
-        this.roundColor = roundColor
-        return this
-    }
-
     override fun wrapperHandle(view: View) {
         val roundDrawable =
-            createRoundDrawable(this, view.context)
-        if (roundDrawable != null) {
-            setBackgroundKeepingPadding(view, roundDrawable)
+            createRoundDrawable(this, roundRadius, view.context)
+        roundDrawable?.run {
+            setBackgroundKeepingPadding(view, this)
         }
+    }
+
+    override fun restoreHandle(view: View) {
+        setBackgroundKeepingPadding(view, null)
     }
 
     companion object {
@@ -93,6 +68,7 @@ class RoundWrapperHandler : WrapperHandler {
 
         private fun createRoundDrawable(
             obj: RoundWrapperHandler,
+            roundRadius: Int,
             context: Context
         ): Drawable? {
             val drawable = obj.roundDrawable
@@ -124,7 +100,7 @@ class RoundWrapperHandler : WrapperHandler {
                     0,
                     RoundDrawable.CORNER_BOTTOM_LEFT
                 )
-                else -> RoundDrawable(image, 30, obj.roundType)
+                else -> RoundDrawable(image, roundRadius, obj.roundType)
             }
         }
     }

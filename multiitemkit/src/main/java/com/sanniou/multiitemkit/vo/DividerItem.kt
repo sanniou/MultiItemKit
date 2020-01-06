@@ -1,6 +1,6 @@
 package com.sanniou.multiitemkit.vo
 
-import com.sanniou.multiitem.AdapterItem
+import com.sanniou.multiitem.DataItem
 import com.sanniou.multiitemkit.R
 
 class DividerItem(
@@ -10,7 +10,7 @@ class DividerItem(
     var heightDP: Float = 0F,
     var padding: Int = 0,
     var paddingDP: Float = 0F
-) : AdapterItem {
+) : DataItem {
 
     override fun getItemType() = R.layout.multiitemkit_item_divider
 }

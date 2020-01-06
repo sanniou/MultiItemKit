@@ -1,6 +1,5 @@
 package com.sanniou.multiitemkit
 
-
 import android.graphics.Rect
 import android.view.GestureDetector.SimpleOnGestureListener
 import android.view.MotionEvent
@@ -11,10 +10,6 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.OnItemTouchListener
 import com.sanniou.multiitem.AdapterViewHolder
 import com.sanniou.multiitem.getAdapterHolder
-
-typealias OnLongPressListener = (holder: AdapterViewHolder) -> Unit
-
-typealias OnItemClickListener = (holder: AdapterViewHolder) -> Boolean
 
 class BaseRecyclerViewItemTouchListener(
     private val mRecyclerView: RecyclerView,
@@ -35,7 +30,7 @@ class BaseRecyclerViewItemTouchListener(
 
                 override fun onLongPress(e: MotionEvent) {
                     mRecyclerView.findChildViewUnder(e.x, e.y)?.let {
-                        mLongPressListener?.invoke(it.getAdapterHolder())
+                        mLongPressListener?.onLongPress(it.getAdapterHolder())
                     }
                 }
             })
@@ -83,7 +78,7 @@ class BaseRecyclerViewItemTouchListener(
                         specialChildViewId
                     )
                 } else {
-                    mItemClickListener?.invoke(holder) ?: false
+                    mItemClickListener?.onItemClick(holder) ?: false
                 }
             }
         }

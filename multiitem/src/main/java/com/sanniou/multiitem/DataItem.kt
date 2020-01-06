@@ -5,12 +5,12 @@ package com.sanniou.multiitem
  */
 var defaultItemID = BR.item
 
-interface AdapterItem {
+interface DataItem {
 
     /**
      * when some warp data
      */
-    fun <T : AdapterItem> getItemData(): T {
+    fun <T : DataItem> getItemData(): T {
         return this as T
     }
 
