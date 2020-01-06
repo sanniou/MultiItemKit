@@ -73,7 +73,7 @@ open class LoadMoreItem(var onLoadListener: OnLoadListener) : AdapterItem, LoadC
 
     companion object {
 
-        var defaultLayout = R.layout.item_loadmore
+        var defaultLayout = R.layout.multiitemkit_item_loadmore
         var readyText = "待加载"
         var loadingText = "加载中"
         var failedText = "加载失败"

@@ -81,7 +81,7 @@ class AdapterViewHolder(itemView: View) :
     private var viewMap = SparseArrayCompat<View>()
 
     init {
-        itemView.setTag(R.id.tag_key_holder, this)
+        itemView.setTag(R.id.multiitem_tag_key_holder, this)
     }
 
     lateinit var item: AdapterItem
@@ -95,6 +95,10 @@ class AdapterViewHolder(itemView: View) :
             item.executeHankers(itemView)
         }
         item.onBind(this)
+    }
+
+    fun rebind() {
+        onBind(item)
     }
 
     fun onAttached() {
@@ -123,4 +127,4 @@ class AdapterViewHolder(itemView: View) :
  * never be null
  */
 fun View.getAdapterHolder() =
-    this.getTag(R.id.tag_key_holder) as AdapterViewHolder
+    this.getTag(R.id.multiitem_tag_key_holder) as AdapterViewHolder

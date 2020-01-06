@@ -38,11 +38,6 @@ interface AdapterItem {
     fun onBind(holder: AdapterViewHolder) {}
 
     /**
-     * item onRecycler
-     */
-    fun onRecycler(holder: AdapterViewHolder) {}
-
-    /**
      * item onAttached
      */
     fun onAttached(holder: AdapterViewHolder) {}

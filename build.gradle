@@ -4,7 +4,7 @@ ext {
     repoName = "MultiItem" //仓库名
     groupId = 'com.sanniou' //groupId
     desc = 'recyclerview multi item adapter' //描述
-    website = 'https://github.com/sanniou/MultiItem' //地址，填写真实可访问地址
+    website = 'https://github.com/sanniou/MultiItemKit' //地址，填写真实可访问地址
     licences = ['Apache-2.0'] //描述，填写licences
 }
 buildscript {

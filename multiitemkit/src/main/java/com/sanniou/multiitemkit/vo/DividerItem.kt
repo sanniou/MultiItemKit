@@ -12,5 +12,5 @@ class DividerItem(
     var paddingDP: Float = 0F
 ) : AdapterItem {
 
-    override fun getItemType() = R.layout.item_divider
+    override fun getItemType() = R.layout.multiitemkit_item_divider
 }
