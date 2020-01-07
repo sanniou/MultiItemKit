@@ -1,6 +1,6 @@
 [TOC]
 # MultiItem
-MultiItem 诞生在一个深度使用 [`databinding`][1] 的开发环境中，balabala……
+MultiItem 诞生在一个深度使用 [`databinding`][1] 的开发环境中，结合数据驱动的开发思想，抽象出一个数据层的接口 `DataItem` ，并开发与其配套使用的一系列工具，核心思想是拆解 UI ，组合并复用 `DataItem` 来完成界面
 ## 开始
 ```
     implementation 'com.sanniou:multiitem:0.0.1'
@@ -116,8 +116,7 @@ isItemPrefetchEnabled 启用预取
 customerLayoutManager 表示使用自定义 LayoutManager ，如果 true 则 LayoutManager 相关属性不生效
 ```
 ### 在 Layout 中使用 DataItem
-`DataItem` 也可以直接在 `Layout` 中使用 `item` 属性绑定
-
+`DataItem` 也可以直接在 `Layout` 中使用 `item` 属性绑定  
 在 `Framlayout` 中作为 `childView` 使用
 ```
     <FrameLayout
@@ -134,8 +133,7 @@ customerLayoutManager 表示使用自定义 LayoutManager ，如果 true 则 Lay
 ```
 
 ### 使用 WrapperDataItem
-继承 `WrapperDataItem` ,需要实现一个 `WrapperHandler` ，可以扩展 DataItem 的更多特性；
-
+继承 `WrapperDataItem` ,需要实现一个 `WrapperHandler` ，可以扩展 DataItem 的更多特性；  
 `WrapperHandler` 的意义在于，封装了一些通用的 `DataItem` 处理方法，可以快速集成在新的 `DataItem` 中。
 在 `multiitemkit` 中提供了以下几种 WrapperHandler
 
