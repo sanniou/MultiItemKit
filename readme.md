@@ -1,6 +1,8 @@
 [TOC]
 # MultiItem
-`MultiItem` 诞生在一个深度使用 [`databinding`][1] 的开发环境中，结合数据驱动的开发思想，抽象出一个数据层的接口 `DataItem` ，并开发与其配套使用的一系列工具，核心思想是拆解 UI ，组合并复用 `DataItem` 来完成界面。  
+ `MultiItem` 诞生在一个深度使用 [`databinding`][1] 的开发环境中，结合数据驱动的开发思想，抽象出一个数据层的接口 `DataItem` ，使用 `databinding` 绑定 View 和 DataItem ，之后对于 UI 的任何修改都只需要修改数据类 `DataItem` , 并开发与其配套使用的一系列工具 `MultiItemKit`。以此提高开发效率。  
+核心思想是拆解 UI ，组合并复用 `DataItem` 来完成界面。  
+
 上述都是扯淡，主要用途是 `RecyclerView` 快速绑定。
 ## 开始
 ```kotlin
