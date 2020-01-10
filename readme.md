@@ -1,5 +1,9 @@
 [TOC]
 # MultiItem
+
+[![Build Status](https://api.travis-ci.com/sanniou/MultiItemKit.svg?branch=master)](https://travis-ci.com/sanniou/MultiItemKit)
+[![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://github.com/drakeet/MultiItemKit/blob/master/LICENSE)
+[ ![Download](https://api.bintray.com/packages/findjichang/maven/MultiItem/images/download.svg) ](https://bintray.com/findjichang/maven/MultiItem/_latestVersion)  
  `MultiItem` 诞生在一个深度使用 [`databinding`][1] 的开发环境中，结合数据驱动的开发思想，抽象出一个数据层的接口 `DataItem` ，使用 `databinding` 绑定 View 和 DataItem ，之后对于 UI 的任何修改都只需要修改数据类 `DataItem` , 并开发与其配套使用的一系列工具 `MultiItemKit`。以此提高开发效率。  
 核心思想是拆解 UI ，组合并复用 `DataItem` 来完成界面。  
 
