@@ -10,9 +10,9 @@
 上述都是扯淡，主要用途是 `RecyclerView` 快速绑定。
 ## 开始
 ```kotlin
-    implementation 'com.sanniou:multiitem:0.0.1'
+    implementation 'com.sanniou:multiitem:0.0.2'
     // 可选
-    implementation 'com.sanniou:multiitemkit:0.0.1'
+    implementation 'com.sanniou:multiitemkit:0.0.2'
 ```
 ## 用法
 ### 实现 DataItem
