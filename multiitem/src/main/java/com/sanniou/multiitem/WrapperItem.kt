@@ -5,9 +5,6 @@ import androidx.annotation.CallSuper
 
 /**
  * 定义一个Item类型，拥有自身的处理器，可以在 bindAdapter 绑定数据时进行额外的处理
- *
- * @author jichang
- * @date 2018/9/6
  */
 interface WrapperDataItem : DataItem {
     /**
