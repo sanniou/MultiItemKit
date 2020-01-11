@@ -3,8 +3,6 @@ package com.sanniou.multiitemkit.helper
 import android.graphics.drawable.Drawable
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.children
-import com.sanniou.multiitemkit.R
 
 fun setBackgroundKeepingPadding(view: View, drawable: Drawable?) {
     val padding = intArrayOf(
@@ -15,32 +13,26 @@ fun setBackgroundKeepingPadding(view: View, drawable: Drawable?) {
     view.setPadding(padding[0], padding[1], padding[2], padding[3])
 }
 
-fun replaceView(fromView: View, toView: View): Boolean {
+fun replaceView(oldView: View, newView: View): Boolean {
 
-    if (fromView === toView) {
+    if (oldView === newView) {
         return true
     }
-    val params = fromView.layoutParams
-    val parentLayout = if (fromView.parent != null) {
-        fromView.parent as ViewGroup
-    } else {
-        fromView.rootView.findViewById(R.id.content)
-    }
+    val params = oldView.layoutParams
+    val parentLayout = (oldView.parent as? ViewGroup) ?: return false
 
-    val viewIndex = parentLayout.children.indexOfFirst {
-        it == fromView
-    }
+    val viewIndex = parentLayout.indexOfChild(oldView)
 
     if (viewIndex == -1) {
         return false
     }
 
-    val parent = toView.parent as? ViewGroup
+    val parent = newView.parent as? ViewGroup
     // remove view before add
-    parent?.removeView(toView)
+    parent?.removeView(newView)
     // replace = remove + add
-    toView.id = fromView.id
+    newView.id = oldView.id
     parentLayout.removeViewAt(viewIndex)
-    parentLayout.addView(toView, viewIndex, params)
+    parentLayout.addView(newView, viewIndex, params)
     return true
 }
