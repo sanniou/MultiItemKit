@@ -15,7 +15,8 @@
     implementation 'com.sanniou:multiitem:0.0.2'
     // 可选
     implementation 'com.sanniou:multiitemkit:0.0.2'
-```
+```  
+可选：安装 `MultiItemTemplates` 插件， 地址 https://github.com/sanniou/MultiItemTemplates  
 ## 用法
 ### 实现 DataItem
 实现 `getItemType` ；
