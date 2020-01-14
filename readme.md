@@ -3,7 +3,7 @@
 
 [![Build Status](https://api.travis-ci.com/sanniou/MultiItemKit.svg?branch=master)](https://travis-ci.com/sanniou/MultiItemKit)
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://github.com/drakeet/MultiItemKit/blob/master/LICENSE)
-[ ![Download](https://api.bintray.com/packages/findjichang/maven/MultiItem/images/download.svg) ](https://bintray.com/findjichang/maven/MultiItem/_latestVersion)  
+[![Download](https://api.bintray.com/packages/saniou/maven/MultiItem/images/download.svg) ](https://bintray.com/saniou/maven/MultiItem/_latestVersion)
  `MultiItem` 诞生在一个深度使用 [`databinding`][1] 的开发环境中，创造一个数据层的接口 `DataItem` ，使用 `databinding` 绑定 View 和 DataItem ，之后对于 UI 的任何修改都只需要修改数据类 `DataItem` 来实现, 这就是 `MultiItem` 的使用方法。  
 在有了合适的 `MultiItem` 之后，我们就不需要再关心布局的细节了，应该构造合适的 `MultiItem` 来填充 `RecyclerView` 或者 `ViewGroup` 来完成 UI。  
 
@@ -12,9 +12,9 @@
 主要用途还是 `RecyclerView` 快速绑定。
 ## 开始
 ```kotlin
-    implementation 'com.sanniou:multiitem:0.0.2'
+    implementation 'com.sanniou:multiitem:latestVersion'
     // 可选
-    implementation 'com.sanniou:multiitemkit:0.0.2'
+    implementation 'com.sanniou:multiitemkit:latestVersion'
 ```  
 可选：安装 `MultiItemTemplates` 插件， 地址 https://github.com/sanniou/MultiItemTemplates  
 ## 用法
