@@ -1,1 +1,3 @@
 include ':app', ':multiitem', ':multiitemkit'
+
+//        ./gradlew clean generatePomFileForReleasePublication build bintrayUpload -PbintrayUser=saniou -PbintrayKey=c519c59c90c4d888366f695d8b6a18c0739653e4 -PdryRun=false

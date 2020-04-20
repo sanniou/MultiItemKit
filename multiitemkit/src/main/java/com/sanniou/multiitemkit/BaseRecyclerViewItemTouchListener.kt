@@ -34,7 +34,7 @@ class BaseRecyclerViewItemTouchListener(
                     }
                 }
             })
-        mGestureDetector.setIsLongpressEnabled(false)
+        mGestureDetector.setIsLongpressEnabled(true)
     }
 
     fun setClickListener(itemClickListener: OnItemClickListener?) {

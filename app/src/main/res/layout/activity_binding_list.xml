@@ -5,7 +5,11 @@
 
         <variable
             name="itemClickListener"
-            type="com.sanniou.multiitem.OnItemClickListener" />
+            type="com.sanniou.multiitemkit.OnItemClickListener" />
+
+        <variable
+            name="itemLongPressListener"
+            type="com.sanniou.multiitemkit.OnLongPressListener" />
 
         <variable
             name="data"
@@ -21,6 +25,7 @@
         <androidx.recyclerview.widget.RecyclerView
             data="@{data}"
             itemClickListener="@{itemClickListener}"
+            longPressListener="@{itemLongPressListener}"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </FrameLayout>

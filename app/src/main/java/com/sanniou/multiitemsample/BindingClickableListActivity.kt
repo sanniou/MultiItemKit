@@ -18,6 +18,7 @@ class BindingClickableListActivity : BaseGithubRepoActivity() {
         binding.data = items
         binding.setItemClickListener {
             Toast.makeText(this, (it.item as GithubRepo).full_name, LENGTH_SHORT).show()
+            false
         }
     }
 
