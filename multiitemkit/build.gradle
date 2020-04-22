@@ -1,3 +1,4 @@
+apply from: "../config.gradle"
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
@@ -5,15 +6,15 @@ apply plugin: 'kotlin-kapt'
 apply plugin: 'com.novoda.bintray-release'
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.3"
+    compileSdkVersion androidConfig.compileSdk
+    buildToolsVersion androidConfig.buildTools
 
 
     defaultConfig {
-        minSdkVersion 17
-        targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion androidConfig.minSdk
+        targetSdkVersion androidConfig.targetSdk
+        versionCode androidConfig.code
+        versionName androidConfig.name
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
@@ -40,9 +41,10 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
-    implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'androidx.core:core-ktx:1.2.0'
-    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+    implementation "androidx.appcompat:appcompat:$libVersion.appcompat"
+    implementation "androidx.core:core-ktx:$libVersion.core"
+    implementation "androidx.recyclerview:recyclerview:$libVersion.recyclerview"
+
     api project(path: ':multiitem')
 
     testImplementation 'junit:junit:4.13'
@@ -53,10 +55,10 @@ dependencies {
 publish {
     artifactId = 'multiitemkit'  // artifactId
     uploadName = 'MultiItemKit' // 展示名字
-    publishVersion = rootProject.multiItemKitVersion
-    userOrg = rootProject.userOrg
-    groupId = rootProject.groupId
-    desc = rootProject.desc
-    website = rootProject.website
-    licences = rootProject.licences
+    publishVersion = publishConfig.multiItemKitVersion
+    userOrg = publishConfig.userOrg
+    groupId = publishConfig.groupId
+    desc = publishConfig.desc
+    website = publishConfig.website
+    licences = publishConfig.licences
 }
