@@ -9,7 +9,7 @@ typealias  OnLoadListener = (callBack: LoadCallBack) -> Unit
 
 open class LoadMoreItem(var onLoadListener: OnLoadListener) : DataItem, LoadCallBack {
 
-    var status = ObservableField<Int>(STATE_READY)
+    var status = ObservableField(STATE_READY)
     var text = ObservableField<String>()
 
     /**
@@ -33,7 +33,7 @@ open class LoadMoreItem(var onLoadListener: OnLoadListener) : DataItem, LoadCall
     }
 
     fun reload() {
-        if (status.get() == STATE_NO_MORE || status.get() == STATE_FAILED) {
+        if (status.get() == STATE_NO_MORE || status.get() == STATE_FAILED || status.get() == STATE_READY) {
             onStatusChange(STATE_READY)
             load()
         }

@@ -3,10 +3,7 @@ package com.sanniou.multiitemkit.bindingadapter
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ItemDecoration
-import com.sanniou.multiitem.DataItem
-import com.sanniou.multiitem.MultiItemArrayList
-import com.sanniou.multiitem.handleLayoutManager
-import com.sanniou.multiitemkit.MultiClickAdapter
+import com.sanniou.multiitemkit.ItemClickHelper
 import com.sanniou.multiitemkit.OnItemClickListener
 import com.sanniou.multiitemkit.OnLongPressListener
 import com.sanniou.multiitemkit.SpecialViewClickListener
@@ -19,7 +16,6 @@ import java.util.ArrayList
 /**
  * @param dividerColor   颜色
  * @param dividerHeight  高度
- * @param divider        是否处理分割线，一般不需设置，最少只设置这一个值即可
  * @param noDivider      不处理分割线
  * @param horizontal     方向，默认竖向
  * @param drawOnTop      绘制在 View 上边
@@ -43,15 +39,13 @@ fun bindingRecyclerDivider(
     drawLastEnd: Boolean,
     types: List<Int>?
 ) {
-    var height = dividerHeight
     if (noDivider) {
         return
     }
-    if (dividerHeightDp != 0F) {
-        height = dp2px(dividerHeightDp)
-    }
+    val height = if (dividerHeightDp != 0F) dp2px(dividerHeightDp) else dividerHeight
+
     if (height == 0) {
-        height = dp2px(1F)
+        return
     }
     val itemDecorationCount = view.itemDecorationCount
     val itemDecorations = ArrayList<ItemDecoration>()
@@ -95,58 +89,21 @@ fun bindingRecyclerDivider(
 }
 
 /**
- * @param data 数据集
+ *
+ * @param view RecyclerView
  * @param itemClickListener item 点击监听
  * @param longPressListener item 长按监听
  * @param viewListener item 指定 id 的 view 点击监听
- * @param layoutManager LayoutManager 字符串
- * @param orientation orientation 默认是0 ，为了使默认使用 VERTICAL ，这里规定 0 = VERTICAL0 ，1 = HORIZONTAL，那么需要横向时设置 1 即可
- * @param span span 值
- * @param prefetchCount 预取
- * @param isItemPrefetchEnabled 启用预取
- * @param customerLayoutManager 表示使用自定义 LayoutManager ，如果 true 则 LayoutManager 相关属性不生效
- *
  */
 @BindingAdapter(
-    value = ["data", "itemClickListener", "longPressListener", "viewClickListener", "layoutManager", "orientation", "span", "prefetchCount", "isItemPrefetchEnabled", "customerLayoutManager"],
+    value = ["itemClickListener", "longPressListener", "viewClickListener"],
     requireAll = false
 )
-fun bindingRecyclerAdapter(
+fun bindingRecyclerClick(
     view: RecyclerView,
-    data: MultiItemArrayList<DataItem>,
     itemClickListener: OnItemClickListener?,
     longPressListener: OnLongPressListener?,
-    viewListener: SpecialViewClickListener?,
-    layoutManager: String?,
-    orientation: Int,
-    span: Int,
-    prefetchCount: Int,
-    isItemPrefetchEnabled: Boolean,
-    customerLayoutManager: Boolean
+    viewListener: SpecialViewClickListener?
 ) {
-    handleLayoutManager(
-        view,
-        data,
-        layoutManager,
-        orientation,
-        span,
-        isItemPrefetchEnabled,
-        prefetchCount,
-        customerLayoutManager
-    )
-
-    if (view.adapter == null) {
-        view.adapter = MultiClickAdapter(data).also {
-            it.itemClickListener = itemClickListener
-            it.longPressListener = longPressListener
-            it.viewClickListener = viewListener
-        }
-    } else {
-        val adapter = view.adapter as MultiClickAdapter<DataItem>
-        adapter.itemClickListener = itemClickListener
-        adapter.longPressListener = longPressListener
-        adapter.viewClickListener = viewListener
-        adapter.data = data
-    }
+    ItemClickHelper.attachToRecyclerView(view, itemClickListener, longPressListener, viewListener)
 }
-

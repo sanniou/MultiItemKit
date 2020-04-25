@@ -77,6 +77,16 @@ open class MultiItemArrayList<T> : ArrayList<T>(), ObservableList<T> {
         }
     }
 
+    fun removeAt(element: T): Int {
+        val index = indexOf(element)
+        return if (index >= 0) {
+            removeAt(index)
+            index
+        } else {
+            index
+        }
+    }
+
     override fun set(index: Int, element: T): T {
         val `val` = super.set(index, element)
         mListeners?.notifyChanged(this, index, 1)

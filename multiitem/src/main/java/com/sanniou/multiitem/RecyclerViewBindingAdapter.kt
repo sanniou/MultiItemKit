@@ -21,7 +21,14 @@ fun bindingRecyclerSnap(view: RecyclerView, snap: String) {
 }
 
 /**
- * @param orientation orientation 默认是0 但是 0=HORIZONTAL,所以使用时 +1，那么需要横向时设置 -1即可
+ * @param data 数据集
+ * @param layoutManager LayoutManager 字符串
+ * @param orientation orientation 默认是0 ，为了使默认使用 VERTICAL ，这里规定 0 = VERTICAL0 ，1 = HORIZONTAL，那么需要横向时设置 1 即可
+ * @param span span 值
+ * @param prefetchCount 预取
+ * @param isItemPrefetchEnabled 启用预取
+ * @param customerLayoutManager 表示使用自定义 LayoutManager ，如果 true 则 LayoutManager 相关属性不生效
+ *
  */
 @BindingAdapter(
     value = ["data", "layoutManager", "orientation", "span", "prefetchCount", "isItemPrefetchEnabled", "customerLayoutManager"],
@@ -63,7 +70,7 @@ fun bindingRecyclerAdapter(
     value = ["data", "itemClickListener", "layoutManager", "orientation", "span", "prefetchCount", "isItemPrefetchEnabled", "customerLayoutManager"],
     requireAll = false
 )
-fun bindingRecyclerAdapter(
+fun bindingRecyclerClickAdapter(
     view: RecyclerView,
     data: MultiItemArrayList<DataItem>,
     listener: OnItemClickListener?,

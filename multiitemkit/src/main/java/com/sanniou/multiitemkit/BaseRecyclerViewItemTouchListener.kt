@@ -59,28 +59,21 @@ class BaseRecyclerViewItemTouchListener(
     private fun handleTouchEvent(event: MotionEvent): Boolean {
         if (mGestureDetector.onTouchEvent(event)) {
 
+            val view =
+                mRecyclerView.findChildViewUnder(event.x, event.y) ?: return false
+            val holder = view.getAdapterHolder()
+            if (holder.adapterPosition == RecyclerView.NO_POSITION) return false
+
             mSpecialViewClickListener?.let { specialClick ->
-
-                val view =
-                    mRecyclerView.findChildViewUnder(event.x, event.y) ?: return false
-
-                val holder = view.getAdapterHolder()
-
-                if (holder.adapterPosition == RecyclerView.NO_POSITION) return false
-
                 val specialChildViewId = findExactChild(
                     holder, view, event.rawX, event.rawY, specialClick
                 )
-
-                return if (specialChildViewId != View.NO_ID) {
-                    specialClick.onSpecialViewClick(
-                        holder,
-                        specialChildViewId
-                    )
-                } else {
-                    mItemClickListener?.onItemClick(holder) ?: false
+                if (specialChildViewId != View.NO_ID) {
+                    return specialClick.onSpecialViewClick(holder, specialChildViewId)
                 }
             }
+
+            return mItemClickListener?.onItemClick(holder) ?: false
         }
         return false
     }

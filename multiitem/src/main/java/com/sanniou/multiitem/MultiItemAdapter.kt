@@ -89,8 +89,10 @@ class AdapterViewHolder(itemView: View) :
     fun onBind(item: DataItem) {
         this.item = item
         val binding = DataBindingUtil.getBinding<ViewDataBinding>(itemView)
-        binding?.setVariable(item.getVariableId(), item.getItemData())
-        binding?.executePendingBindings()
+        binding?.run {
+            setVariable(item.getVariableId(), item.getItemData())
+            executePendingBindings()
+        }
         item.onBind(this)
     }
 
