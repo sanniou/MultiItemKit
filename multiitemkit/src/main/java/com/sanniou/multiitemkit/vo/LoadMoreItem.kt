@@ -11,6 +11,11 @@ open class LoadMoreItem(var onLoadListener: OnLoadListener) : DataItem, LoadCall
 
     var status = ObservableField(STATE_READY)
     var text = ObservableField<String>()
+    var autoLoad = true
+
+    init {
+        ready()
+    }
 
     /**
      * 初始状态，只有此时才响应加载
@@ -68,7 +73,9 @@ open class LoadMoreItem(var onLoadListener: OnLoadListener) : DataItem, LoadCall
     override fun getItemType() = defaultLayout
 
     override fun onBind(holder: AdapterViewHolder) {
-        load()
+        if (autoLoad) {
+            load()
+        }
     }
 
     companion object {
