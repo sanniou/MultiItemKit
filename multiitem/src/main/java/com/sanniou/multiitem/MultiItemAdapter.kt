@@ -29,7 +29,7 @@ open class MultiItemAdapter<T : DataItem>(
         items.addOnListChangedCallback(mCallback)
     }
 
-    protected fun getItem(i: Int): T {
+    fun getItem(i: Int): T {
         return data[i]
     }
 
