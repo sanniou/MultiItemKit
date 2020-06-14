@@ -3,7 +3,8 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
-apply plugin: 'com.novoda.bintray-release'
+// todo wait for fix
+// apply plugin: 'com.novoda.bintray-release'
 
 
 android {
@@ -33,8 +34,8 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-    dataBinding {
-        enabled true
+    buildFeatures {
+        dataBinding true
     }
 }
 
@@ -46,15 +47,15 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 }
-publish {
-    println publishConfig
-
-    artifactId = 'multiitem'
-    uploadName = 'MultiItem'
-    publishVersion = publishConfig.multiItemVersion
-    userOrg = publishConfig.userOrg
-    groupId = publishConfig.groupId
-    desc = publishConfig.desc
-    website = publishConfig.website
-    licences = publishConfig.licences
-}
+//publish {
+//    println publishConfig
+//
+//    artifactId = 'multiitem'
+//    uploadName = 'MultiItem'
+//    publishVersion = publishConfig.multiItemVersion
+//    userOrg = publishConfig.userOrg
+//    groupId = publishConfig.groupId
+//    desc = publishConfig.desc
+//    website = publishConfig.website
+//    licences = publishConfig.licences
+//}
