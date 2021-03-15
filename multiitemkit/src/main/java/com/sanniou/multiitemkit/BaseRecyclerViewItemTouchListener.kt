@@ -24,8 +24,10 @@ class BaseRecyclerViewItemTouchListener(
         mGestureDetector = GestureDetectorCompat(
             mRecyclerView.context,
             object : SimpleOnGestureListener() {
+
                 override fun onSingleTapUp(e: MotionEvent): Boolean {
-                    return true
+                    handleClickEvent(e)
+                    return false
                 }
 
                 override fun onLongPress(e: MotionEvent) {
@@ -50,32 +52,28 @@ class BaseRecyclerViewItemTouchListener(
     }
 
     override fun onInterceptTouchEvent(rv: RecyclerView, event: MotionEvent) =
-        handleTouchEvent(event)
+        mGestureDetector.onTouchEvent(event)
 
     override fun onTouchEvent(rv: RecyclerView, e: MotionEvent) {}
 
     override fun onRequestDisallowInterceptTouchEvent(disallowIntercept: Boolean) {}
 
-    private fun handleTouchEvent(event: MotionEvent): Boolean {
-        if (mGestureDetector.onTouchEvent(event)) {
+    private fun handleClickEvent(event: MotionEvent): Boolean {
+        val view =
+            mRecyclerView.findChildViewUnder(event.x, event.y) ?: return false
+        val holder = view.getAdapterHolder()
+        if (holder.adapterPosition == RecyclerView.NO_POSITION) return false
 
-            val view =
-                mRecyclerView.findChildViewUnder(event.x, event.y) ?: return false
-            val holder = view.getAdapterHolder()
-            if (holder.adapterPosition == RecyclerView.NO_POSITION) return false
-
-            mSpecialViewClickListener?.let { specialClick ->
-                val specialChildViewId = findExactChild(
-                    holder, view, event.rawX, event.rawY, specialClick
-                )
-                if (specialChildViewId != View.NO_ID) {
-                    return specialClick.onSpecialViewClick(holder, specialChildViewId)
-                }
+        mSpecialViewClickListener?.let { specialClick ->
+            val specialChildViewId = findExactChild(
+                holder, view, event.rawX, event.rawY, specialClick
+            )
+            if (specialChildViewId != View.NO_ID) {
+                return specialClick.onSpecialViewClick(holder, specialChildViewId)
             }
-
-            return mItemClickListener?.onItemClick(holder) ?: false
         }
-        return false
+
+        return mItemClickListener?.onItemClick(holder) ?: false
     }
 
     private fun findExactChild(

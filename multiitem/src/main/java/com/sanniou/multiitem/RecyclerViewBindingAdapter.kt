@@ -31,7 +31,7 @@ fun bindingRecyclerSnap(view: RecyclerView, snap: String) {
  *
  */
 @BindingAdapter(
-    value = ["data", "layoutManager", "orientation", "span", "prefetchCount", "isItemPrefetchEnabled", "customerLayoutManager"],
+    value = ["data", "layoutManager", "orientation", "span", "prefetchCount", "isItemPrefetchEnabled", "customerLayoutManager","noClick"],
     requireAll = false
 )
 fun bindingRecyclerAdapter(
@@ -42,7 +42,8 @@ fun bindingRecyclerAdapter(
     span: Int,
     prefetchCount: Int,
     isItemPrefetchEnabled: Boolean,
-    customerLayoutManager: Boolean
+    customerLayoutManager: Boolean,
+    noClick: Any,
 ) {
     handleLayoutManager(
         view,
@@ -63,9 +64,7 @@ fun bindingRecyclerAdapter(
     }
 }
 
-/**
- * @param orientation orientation 默认是0 但是 0=HORIZONTAL,所以使用时 +1，那么需要横向时设置 -1即可
- */
+
 @BindingAdapter(
     value = ["data", "itemClickListener", "layoutManager", "orientation", "span", "prefetchCount", "isItemPrefetchEnabled", "customerLayoutManager"],
     requireAll = false
